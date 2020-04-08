@@ -1,0 +1,67 @@
+#!/usr/bin/python3
+
+# by hgamal & xformer
+
+def lookupWire(area):
+    rc = -1
+    len = 2*(area/3.14159265)**(1/2)
+    for AWG in range(40,0,-1):
+        Bitola = 0.005*92**((36-AWG)/39)*25.4
+        # print (AWG, len, Bitola, sep=", ")
+        if len <= Bitola:
+            rc = AWG
+            break
+    return rc    
+
+Pw = float(input("Potência (watts) ? "))
+Zi = float(input("Impedancia do primario (ohms) ? "))
+Zo = float(input("Impedancia do secundario (ohms) ? "))
+F  = float(input("Frequencia (Hz) ? "))
+
+Bm = 11300.0
+DC = 3.0
+
+# calculo
+Vi = (Pw*Zi)**(1/2)
+Ii = Pw/Vi
+
+Vo = (Pw*Zo)**(1/2)
+Io = Pw/Vo
+
+Si = Ii/DC
+So = Io/DC
+
+Sm = 7.5*((1.5*Pw)/F)**(1/2)
+Sg = 1.1*Sm
+
+print("Secçao minima do nucleo: " +  str(Sg) + "cm2")
+
+L = float(input("Largura da perna central (cm) ? "))
+H = float(input("Empilhamento do nucleo (cm) ? "))
+
+Sgo = L * H
+Smo = Sgo / 1.1
+          
+Wi = lookupWire(Si)
+Wo = lookupWire(So)
+
+Ni = int(Vi * 100000000 / (4.44 * Bm * Smo * F))
+No = int(Vo / Vi * Ni)
+
+# Resultados
+print("Secção usada " + str(Sgo) + "cm2")
+print("Tensao primario (V):" + str(Vi) + "V @ " + str(Ii) + "A")
+print("Tensao secundário (V):" + str(Vo) + "V @ " + str(Io) + "A")
+print("Espiras primario:" + str(Ni) + " @ AWG " + str(Wi))
+print("Espiras secundario:" + str(No) + " @ AWG " + str(Wo))
+
+Scu = (Ni * Si + No * So) / 100 		# 1 cm2 = 100 mm2
+Sj = 1.5 * 0.5 * L
+
+print("Scu = " + str(Scu) + " cm2")
+print("Sj = " + str(Sj) + " cm2")
+
+if Sj/Scu > 3.0:
+	print("Projeto viável")
+else:
+    print("Projeto inviável")
