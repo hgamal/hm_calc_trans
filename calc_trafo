@@ -1,6 +1,6 @@
 #!/usr/bin/python3
 
-# by hgamal & xformer
+import math
 
 def lookupWire(area):
     rc = -1
@@ -13,18 +13,43 @@ def lookupWire(area):
             break
     return rc    
 
+# premissas
 Pw = float(input("Potência (watts) ? "))
 Zi = float(input("Impedancia do primario (ohms) ? "))
 Zo = float(input("Impedancia do secundario (ohms) ? "))
 F  = float(input("Frequencia (Hz) ? "))
-
-Bm = 11300.0
+Tipo = input("Transformador PP ou SE ?")
 DC = 3.0
 
-# calculo
-Vi = (Pw*Zi)**(1/2)
-Ii = Pw/Vi
+if Tipo == "PP" or Tipo == "pp":
+    Iq = float(input("Corrente de repouso (A) ? "))
 
+
+# calculos
+Vi = (Pw*Zi)**(1/2)
+Ip = Pw/Vi
+
+if Tipo == "SE" or Tipo == "se":
+    Iq = Ip * 1.414213562    # corrente quiescente = corrente de pico no primário
+    Ii = (Ip**2 + Iq**2)**(1/2)  # soma a corrente DC com AC no primario
+    Bm = 5000.0
+
+if Tipo == "PP" or Tipo == "pp":
+    Ii = Ip
+    Bm = 8000.0
+    Imax = Ii * 1.414213562
+    soma = Iq**2
+    for Angulo in range (10,350,10):
+        Ix = Imax * math.sin(Angulo*3.14159265435/180)
+        if Ix > -(Iq):
+            Ix2 = (Ix+Iq)**2
+        else:
+            Ix2 = 0
+        soma = soma + Ix2
+    media = soma/36
+    Ii = media**(1/2)    
+    
+    
 Vo = (Pw*Zo)**(1/2)
 Io = Pw/Vo
 
@@ -34,7 +59,7 @@ So = Io/DC
 Sm = 7.5*((1.5*Pw)/F)**(1/2)
 Sg = 1.1*Sm
 
-print("Secçao minima do nucleo: " +  str(Sg) + "cm2")
+print("Secçao minima do nucleo: " +  str(round(Sg,2)) + "cm2   perna central de " + str(round(Sg**(1/2),1)))
 
 L = float(input("Largura da perna central (cm) ? "))
 H = float(input("Empilhamento do nucleo (cm) ? "))
@@ -48,20 +73,14 @@ Wo = lookupWire(So)
 Ni = int(Vi * 100000000 / (4.44 * Bm * Smo * F))
 No = int(Vo / Vi * Ni)
 
+gap = round(12.56 * Ni * Iq / (Bm * 2),3)
+
 # Resultados
-print("Secção usada " + str(Sgo) + "cm2")
-print("Tensao primario (V):" + str(Vi) + "V @ " + str(Ii) + "A")
-print("Tensao secundário (V):" + str(Vo) + "V @ " + str(Io) + "A")
+      
+print("Secção usada " + str(round(Sgo,2)) + "cm2")
+print("Tensao primario (V):" + str(round(Vi,1)) + "V @ " + str(round(Ii,3)) + "A")
+print("Tensao secundário (V):" + str(round(Vo,1)) + "V @ " + str(round(Io,3)) + "A")
 print("Espiras primario:" + str(Ni) + " @ AWG " + str(Wi))
 print("Espiras secundario:" + str(No) + " @ AWG " + str(Wo))
+print("Gap só para transformador SE: " + str(gap) + " mm na perna central e laterais")
 
-Scu = (Ni * Si + No * So) / 100 		# 1 cm2 = 100 mm2
-Sj = 1.5 * 0.5 * L
-
-print("Scu = " + str(Scu) + " cm2")
-print("Sj = " + str(Sj) + " cm2")
-
-if Sj/Scu > 3.0:
-	print("Projeto viável")
-else:
-    print("Projeto inviável")
