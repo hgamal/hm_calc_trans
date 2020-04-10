@@ -126,5 +126,5 @@ print("Espiras primario:" + str(Ni) + " fio AWG " + str(Wi))
 print("Espiras secundario:" + str(No) + " fio AWG " + str(Wo))
 
 if Tipo.upper() == "SE":
-	print("Gap só para transformador SE: " + str(gap) + " mm na perna central e laterais")
+	print("Gap: " + str(gap) + " mm na perna central e laterais")
 
