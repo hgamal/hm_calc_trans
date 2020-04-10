@@ -1,0 +1,148 @@
+"Fab.","Code","A","B","C","thickness","type","temp","obs"
+"dragão","DR 19",25.4,60.0,38.0,2.0,"STSR","140º","Carretéis para chapa de 25,4mm"
+"dragão","DR 46",28.6,29.5,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 16",28.6,33.0,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 47",28.6,38.1,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 48",28.6,42.1,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 15",28.6,43.0,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 99",28.6,45.0,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 38",28.6,50.0,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 18",28.6,60.0,42.9,2.0,"STSR","140º","Carretéis para chapa de 28,6mm"
+"dragão","DR 50",32.0,22.3,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 33",32.0,28.0,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 51",32.0,32.3,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 52",32.0,40.0,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 49",32.0,45.3,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 53",32.0,52.6,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 56",32.0,55.1,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 54",32.0,59.8,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 89",32.0,66.5,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 55",32.0,69.6,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 133",32.0,38.0,48.0,2.0,"STSR","140º","Carretéis para chapa de 32mm – STSR"
+"dragão","DR 185",32.0,22.5,48.0,2.0,"PT","140º","Carretéis para chapa de 32mm – PT"
+"dragão","DR 186",32.0,32.5,48.0,2.0,"PT","140º","Carretéis para chapa de 32mm – PT"
+"dragão","DR 187",32.0,40.3,48.0,2.0,"PT","140º","Carretéis para chapa de 32mm – PT"
+"dragão","DR 188",32.0,52.0,48.0,2.0,"PT","140º","Carretéis para chapa de 32mm – PT"
+"dragão","DR 06",35.0,35.0,50.0,2.0,"STSR","140º","Carretéis para chapa de 35mm"
+"dragão","DR 59",35.0,50.6,52.5,2.0,"STSR","140º","Carretéis para chapa de 35mm"
+"dragão","DR 91",38.0,32.0,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 60",38.0,40.6,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 77",38.0,45.7,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 62",38.0,50.5,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 57",38.0,55.3,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 58",38.0,56.6,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 61",38.0,63.1,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 73",38.0,66.1,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 78",38.0,75.2,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 68",38.0,80.4,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 79",38.0,90.3,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 87",38.0,94.0,57.0,2.0,"STSR","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 191",38.0,54.8,57.0,2.0,"PT","140º","Carretéis para chapa de 38mm – STSR"
+"dragão","DR 93",38.0,45.7,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 94",38.0,50.5,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 95",38.0,55.3,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 97",38.0,56.6,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 96",38.0,63.1,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 88",38.0,66.1,57.0,2.0,"STCD",,"Com divisória"
+"dragão","DR 81",40.0,40.8,60.0,2.0,"STSR","140º","Carretéis para chapa de 40mm"
+"dragão","DR 63",40.0,44.5,60.0,2.0,"STSR","140º","Carretéis para chapa de 40mm"
+"dragão","DR 64",40.0,55.0,60.0,2.0,"STSR","140º","Carretéis para chapa de 40mm"
+"dragão","DR 65",40.0,65.3,60.0,2.0,"STSR","140º","Carretéis para chapa de 40mm"
+"dragão","DR 66",42.0,44.0,63.0,2.0,"STSR","140º","Carretéis para chapa de 42mm"
+"dragão","DR 67",42.0,53.6,63.0,2.0,"STSR","140º","Carretéis para chapa de 42mm"
+"dragão","DR 71",42.0,70.6,63.0,2.0,"STSR","140º","Carretéis para chapa de 42mm"
+"dragão","DR 72",45.0,45.6,64.0,2.0,"STSR","140º","Carretéis para chapa de 45mm"
+"dragão","DR 69",45.0,56.0,64.0,2.0,"STSR","140º","Carretéis para chapa de 45mm"
+"dragão","DR170",45.0,58.0,64.0,2.0,"STSR","140º","Carretéis para chapa de 45mm"
+"dragão","DR 70",45.0,70.3,64.0,2.0,"STSR","140º","Carretéis para chapa de 45mm"
+"dragão","DR 85",45.0,75.4,64.0,2.0,"STSR","140º","Carretéis para chapa de 45mm"
+"dragão","DR 83",50.0,51.3,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 74",50.0,60.3,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 76",50.0,70.3,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 75",50.0,80.0,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 86",50.0,95.8,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 86",50.0,31.0,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 07",50.0,36.0,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 03",50.0,46.0,75.0,2.0,"STSR","140º","Carretéis para chapa de 50mm"
+"dragão","DR 84",60.8,75.4,90.0,2.0,"STSR","140º","Carretéis para chapa de 60,8mm"
+"dragão","DR 80",60.8,90.4,90.0,2.0,"STSR","140º","Carretéis para chapa de 60,8mm"
+"dragão","DR 98",80.0,120.0,120.0,2.0,"STSR","140º","Carretéis para chapa de 80mm"
+"sarlo","SP 01",10.2,10.0,18.5,2.0,"STCR","140º C","Sem Terminal"
+"sarlo","SP 02",10.2,15.0,19.0,2.0,"STCR","140º C","Sem Terminal"
+"sarlo","SP 03",13.0,13.7,21.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 04",13.5,16.0,21.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 05",13.0,20.3,21.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 07",16.5,16.5,23.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 08",16.5,22.7,23.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 09",16.0,27.3,23.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 10",16.7,30.8,23.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 12",16.0,40.5,23.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 14",20.0,20.0,28.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 15",20.0,22.5,28.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 16",20.2,30.7,27.8,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 18",23.0,23.0,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 19",23.0,24.0,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 20",23.0,26.5,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 21",23.0,30.0,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 22",23.0,32.0,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 23",23.0,46.0,31.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 24",23.5,43.6,32.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 47",26.0,19.2,37.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 48",26.0,20.5,37.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 49",26.5,26.0,36.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 50",26.2,32.0,36.5,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 51",26.6,36.0,36.8,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 52",26.0,42.0,37.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 53",26.0,50.0,37.0,2.0,"STSR","140º C","Sem Terminal"
+"sarlo","SP 25",8.5,11.0,26.0,2.0,"PT","140º C","Para Terminal Modelo 1"
+"sarlo","SP 29",10.1,10.1,26.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 30",10.0,15.0,18.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 31",13.4,13.4,27.6,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 32",13.0,16.0,20.5,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 33",13.8,20.5,28.4,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 34",16.5,16.5,30.9,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 35",16.8,23.0,31.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 37",16.5,35.2,29.9,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 38",20.0,22.0,28.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 39",20.0,30.8,28.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 40",23.1,25.8,40.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 41",23.0,30.2,40.0,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 58",26.5,26.1,44.1,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 59",26.1,32.1,40.9,2.0,"PT","140º C","Para Terminal Modelo 2 "
+"sarlo","SP 63",10.1,10.2,26.0,2.0,"PTCD","140º C","Para terminal com divisória modelo 1"
+"sarlo","SP 42",10.0,15.0,18.0,2.0,"PTCD","140º C","Para terminal com divisória modelo 1"
+"sarlo","SP 43",16.5,16.5,30.5,2.0,"PTCD","140º C","Para terminal com divisória modelo 1"
+"sarlo","SP 44",16.8,22.9,30.5,2.0,"PTCD","140º C","Para terminal com divisória modelo 1"
+"sarlo","SP 45",20.2,22.2,33.9,2.0,"PTCD","140º C","Para terminal com divisória modelo 1"
+"sarlo","SP 27",9.9,9.9,18.0,2.0,"PTCD","140º C","Para terminal com divisória modelo 2"
+"sarlo","SP 28",10.0,15.2,18.0,2.0,"PTCD","140º C","Para terminal com divisória modelo 2"
+"sarlo","SP 26",10.0,10.8,19.5,2.0,"PTCD","140º C","Para terminal com divisória modelo 3"
+"santarita","#1",6.7,17.9,12.3,2.0,"CR",,
+"santarita","#2",10.0,10.0,18.5,2.0,"SR",,"Para telefonia"
+"santarita","#3",10.0,10.0,18.5,2.0,"CR",,
+"santarita","#4",10.0,10.0,18.3,2.0,"PT",,
+"santarita","#5",10.0,15.0,19.0,2.0,"CR",,
+"santarita","#6",10.0,15.0,18.8,2.0,"PT",,
+"santarita","#7",13.3,13.3,20.0,2.0,"CR",,
+"santarita","#8",13.3,13.5,20.4,2.0,"PT",,
+"santarita","#9",13.4,16.8,20.8,2.0,"CR",,
+"santarita","#10",13.4,20.0,20.0,2.0,"CR",,
+"santarita","#11",16.1,16.4,23.4,2.0,"CR",,
+"santarita","#12",16.1,16.4,23.4,2.0,"CD",,
+"santarita","#13",16.4,16.4,23.5,2.0,"PTCD",,
+"santarita","#14",16.9,22.9,23.3,2.0,"CR",,
+"santarita","#15",16.9,30.0,23.5,2.0,"CR",,
+"santarita","#16",19.9,19.8,27.3,2.0,"SR",,
+"santarita","#17",20.0,22.7,25.5,2.0,"CR",,
+"santarita","#18",20.0,22.3,24.6,2.0,"PT",,
+"santarita","#19",20.1,22.3,24.6,2.0,"CR",,
+"santarita","#20",20.1,22.3,24.6,2.0,"CRCD",,
+"santarita","#21",23.3,24.1,32.8,2.0,"SR",,
+"santarita","#22",23.5,30.2,30.2,2.0,"SR",,
+"santarita","#23",26.0,26.0,37.8,2.0,"SR",,
+"santarita","#24",32.5,32.4,42.3,2.0,"SR",,
+"santarita","#25",32.7,50.4,46.7,2.0,"SR",,
+"santarita","#26",38.6,32.0,56.0,2.0,"CR",,
+"santarita","#27",38.6,45.2,56.0,2.0,"CR",,
+"santarita","#28",38.6,40.2,56.0,2.0,"CR",,
+"santarita","#29",38.6,55.2,56.0,2.0,"CR",,
