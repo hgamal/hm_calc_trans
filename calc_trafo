@@ -1,55 +1,79 @@
 #!/usr/bin/python3
 
 import math
+import CoilForm
+import Core
 
 def lookupWire(area):
-    rc = -1
-    len = 2*(area/3.14159265)**(1/2)
-    for AWG in range(40,0,-1):
-        Bitola = 0.005*92**((36-AWG)/39)*25.4
-        # print (AWG, len, Bitola, sep=", ")
-        if len <= Bitola:
-            rc = AWG
-            break
-    return rc    
+	rc = -1
+	len = 2*(area/3.14159265)**(1/2)
+	for AWG in range(40,0,-1):
+		Bitola = 0.005*92**((36-AWG)/39)*25.4
+		# print (AWG, len, Bitola, sep=", ")
+		if len <= Bitola:
+			rc = AWG
+			break
+	return rc	
+
+def lookupCoilForm(L):
+	forms = CoilForm.CoilForm.load("reels.csv")
+	selectForms = CoilForm.CoilForm.lookupCoilForms(forms, L*10, L*11)
+	if len(selectForms) != 0:
+		i = 0
+		for bob in selectForms:
+			print (str(i)+" : "+str(bob))
+			i = i+1
+		sel=input("selecione o carretel a ser usado, da lista acima: ")
+		return selectForms[int(sel)]
+	return None
+
+def lookupCore(L):
+	forms = Core.Core.load("cores.csv")
+	selectCores = Core.Core.lookupCoresBySize(forms, L, L*1.1)
+	if len(selectCores) != 0:
+		i = 0
+		for c in selectCores:
+			print (str(i)+" : "+str(c))
+			i = i+1
+		sel=input("selecione o laminado a ser usado, da lista acima: ")
+		return selectCores[int(sel)]
+	return None
 
 # premissas
 Pw = float(input("Potência (watts) ? "))
 Zi = float(input("Impedancia do primario (ohms) ? "))
 Zo = float(input("Impedancia do secundario (ohms) ? "))
 F  = float(input("Frequencia (Hz) ? "))
-Tipo = input("Transformador PP ou SE ?")
+Tipo = input("Transformador PP ou SE ? ")
 DC = 3.0
 
-if Tipo == "PP" or Tipo == "pp":
-    Iq = float(input("Corrente de repouso (A) ? "))
-
+if Tipo.upper() == "PP":
+	Iq = float(input("Corrente de repouso (A) ? "))
 
 # calculos
 Vi = (Pw*Zi)**(1/2)
 Ip = Pw/Vi
 
-if Tipo == "SE" or Tipo == "se":
-    Iq = Ip * 1.414213562    # corrente quiescente = corrente de pico no primário
-    Ii = (Ip**2 + Iq**2)**(1/2)  # soma a corrente DC com AC no primario
-    Bm = 5000.0
+if Tipo.upper() == "SE":
+	Iq = Ip * 1.414213562	# corrente quiescente = corrente de pico no primário
+	Ii = (Ip**2 + Iq**2)**(1/2)  # soma a corrente DC com AC no primario
+	Bm = 5000.0
 
-if Tipo == "PP" or Tipo == "pp":
-    Ii = Ip
-    Bm = 8000.0
-    Imax = Ii * 1.414213562
-    soma = Iq**2
-    for Angulo in range (10,350,10):
-        Ix = Imax * math.sin(Angulo*3.14159265435/180)
-        if Ix > -(Iq):
-            Ix2 = (Ix+Iq)**2
-        else:
-            Ix2 = 0
-        soma = soma + Ix2
-    media = soma/36
-    Ii = media**(1/2)    
-    
-    
+if Tipo.upper() == "PP":
+	Ii = Ip
+	Bm = 8000.0
+	Imax = Ii * 1.414213562
+	soma = Iq**2
+	for Angulo in range (10,350,10):
+		Ix = Imax * math.sin(Angulo*3.14159265435/180)
+		if Ix > -(Iq):
+			Ix2 = (Ix+Iq)**2
+		else:
+			Ix2 = 0
+		soma = soma + Ix2
+	media = soma/36
+	Ii = media**(1/2)	
+
 Vo = (Pw*Zo)**(1/2)
 Io = Pw/Vo
 
@@ -59,14 +83,29 @@ So = Io/DC
 Sm = 7.5*((1.5*Pw)/F)**(1/2)
 Sg = 1.1*Sm
 
-print("Secçao minima do nucleo: " +  str(round(Sg,2)) + "cm2   perna central de " + str(round(Sg**(1/2),1)))
+Ls = round(Sg**(1/2),1)
 
-L = float(input("Largura da perna central (cm) ? "))
-H = float(input("Empilhamento do nucleo (cm) ? "))
+print("Secçao minima do nucleo: " +  str(round(Sg,2)) + "cm2, perna central de " + str(Ls) + " cm")
+
+core = lookupCore(Ls*10)
+if core is None:
+	print("Nenhum laminado encontrado na lista de laminados")
+	L = float(input("Largura da perna central (cm) ? "))
+else:
+    L = core.leg/10
+    print("Usando o laminado " + str(core) + ", Perna central = " + str(L) + " (cm)")
+
+coilForm = lookupCoilForm(L)
+if coilForm is None:
+	print("Nenhum carretel encontrado na lista de carreteis")
+	H = float(input("Empilhamento do nucleo (cm) ? "))
+else:
+	H = coilForm.stack/10
+	print("Usando o carretel " + str(coilForm) + ", Empilhamento = " + str(H) + " (cm)")
 
 Sgo = L * H
 Smo = Sgo / 1.1
-          
+		  
 Wi = lookupWire(Si)
 Wo = lookupWire(So)
 
@@ -76,11 +115,16 @@ No = int(Vo / Vi * Ni)
 gap = round(12.56 * Ni * Iq / (Bm * 2),3)
 
 # Resultados
-      
-print("Secção usada " + str(round(Sgo,2)) + "cm2")
-print("Tensao primario (V):" + str(round(Vi,1)) + "V @ " + str(round(Ii,3)) + "A")
-print("Tensao secundário (V):" + str(round(Vo,1)) + "V @ " + str(round(Io,3)) + "A")
-print("Espiras primario:" + str(Ni) + " @ AWG " + str(Wi))
-print("Espiras secundario:" + str(No) + " @ AWG " + str(Wo))
-print("Gap só para transformador SE: " + str(gap) + " mm na perna central e laterais")
+	  
+print("*** Resultados ***")
+print("Secção usada " + str(L) + "cm x " + str(H) + " cm = " + str(round(Sgo,2)) + "cm2")
+print("  Lamina: " + str(core))
+print("  Carretel: " + str(coilForm))
+print("Tensao primario:" + str(round(Vi,1)) + "V @ " + str(round(Ii,3)) + "A")
+print("Tensao secundário:" + str(round(Vo,1)) + "V @ " + str(round(Io,3)) + "A")
+print("Espiras primario:" + str(Ni) + " fio AWG " + str(Wi))
+print("Espiras secundario:" + str(No) + " fio AWG " + str(Wo))
+
+if Tipo.upper() == "SE":
+	print("Gap só para transformador SE: " + str(gap) + " mm na perna central e laterais")
 

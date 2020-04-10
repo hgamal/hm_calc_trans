@@ -1,44 +1,38 @@
-#!/usr/bin/python3
+import csv
 
-class Cores:
+class Core:
 	name = 'none'
 	leg = 0.0
-	def __init__(self, name, leg):
+	def __init__(self, supplier, name, leg):
+		self.supplier = supplier
 		self.name = name
-		self.leg = leg
+		self.leg = float(leg)
   
 	def __repr__(self):
-		return self.name + " => " + str(self.leg) + " mm"
-  
+		return self.supplier + ":" + self.name + ": leg=" + str(self.leg) + " mm"
+
 	@staticmethod
-	def lookupCoreBySize(len, cores):
+	def load(file):
+		table = []
+		with open(file) as csv_file:
+			csv_reader = csv.reader(csv_file, delimiter=',')
+			line_count = 0
+			for row in csv_reader:
+				if line_count == 0:
+					# print(f'Column names: {", ".join(row)}')
+					line_count += 1
+				else:
+					bob = Core(row[0], row[1], row[4])
+					table.append(bob);
+					# print(f'\t{row[0]}: code="{row[1]}"", leg={row[2]} mm')
+					line_count += 1
+			# print(f'Processed {line_count} lines.')
+			return table
+
+	@staticmethod
+	def lookupCoresBySize(cores, lmin, lmax):
+		resp = []
 		for c in cores:
-			if c.leg >= len:
-				return c
-		return "unknown"
-
-dbcores = []
-
-dbcores.append(Cores("4HS-190", 19.0))
-dbcores.append(Cores("4HS-200", 20.0))
-dbcores.append(Cores("4HS-220", 22.0))
-dbcores.append(Cores("4HS-222", 22.2))
-dbcores.append(Cores("4HS-250", 25.0))
-dbcores.append(Cores("4HS-254", 25.4))
-dbcores.append(Cores("4HS-280", 28.0))
-dbcores.append(Cores("4HS-286", 28.6))
-dbcores.append(Cores("4HS-318", 31.8))
-dbcores.append(Cores("4HS-320", 32.0))
-dbcores.append(Cores("4HS-350", 35.0))
-dbcores.append(Cores("4HS-360", 36.0))
-dbcores.append(Cores("4HS-380", 38.0))
-dbcores.append(Cores("4HS-400", 40.0))
-dbcores.append(Cores("4HS-444", 44.4))
-dbcores.append(Cores("4HS-500", 50.0))
-dbcores.append(Cores("4HS-508", 50.8))
-dbcores.append(Cores("4HS-600", 60.0))
-dbcores.append(Cores("4HS-635", 63.5))
-
-print(Cores.lookupCoreBySize(10, dbcores))
-print(Cores.lookupCoreBySize(20, dbcores))
-print(Cores.lookupCoreBySize(30, dbcores))
+			if c.leg >= lmin and c.leg <= lmax:
+				resp.append(c)
+		return resp
