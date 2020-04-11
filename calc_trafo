@@ -15,9 +15,9 @@ def lookupWire(area):
 			break
 	return rc	
 
-def lookupCoilForm(L):
+def lookupCoilForm(area):
 	forms = CoilForm.CoilForm.load("reels.csv")
-	selectForms = CoilForm.CoilForm.lookupCoilForms(forms, L*10, L*11)
+	selectForms = CoilForm.CoilForm.lookupCoilForms(forms, area, area*1.5)
 	if len(selectForms) != 0:
 		i = 0
 		for bob in selectForms:
@@ -29,7 +29,7 @@ def lookupCoilForm(L):
 
 def lookupCore(L):
 	forms = Core.Core.load("cores.csv")
-	selectCores = Core.Core.lookupCoresBySize(forms, L, L*1.1)
+	selectCores = Core.Core.lookupCoresBySize(forms, L*0.9, L)
 	if len(selectCores) != 0:
 		i = 0
 		for c in selectCores:
@@ -87,21 +87,21 @@ Ls = round(Sg**(1/2),1)
 
 print("Secçao minima do nucleo: " +  str(round(Sg,2)) + "cm2, perna central de " + str(Ls) + " cm")
 
-core = lookupCore(Ls*10)
-if core is None:
-	print("Nenhum laminado encontrado na lista de laminados")
-	L = float(input("Largura da perna central (cm) ? "))
-else:
-    L = core.leg/10
-    print("Usando o laminado " + str(core) + ", Perna central = " + str(L) + " (cm)")
-
-coilForm = lookupCoilForm(L)
+coilForm = lookupCoilForm(Sg*100)
 if coilForm is None:
 	print("Nenhum carretel encontrado na lista de carreteis")
 	H = float(input("Empilhamento do nucleo (cm) ? "))
 else:
 	H = coilForm.stack/10
 	print("Usando o carretel " + str(coilForm) + ", Empilhamento = " + str(H) + " (cm)")
+
+core = lookupCore(coilForm.leg)
+if core is None:
+	print("Nenhum laminado encontrado na lista de laminados")
+	L = float(input("Largura da perna central (cm) ? "))
+else:
+    L = core.leg/10
+    print("Usando o laminado " + str(core) + ", Perna central = " + str(L) + " (cm)")
 
 Sgo = L * H
 Smo = Sgo / 1.1

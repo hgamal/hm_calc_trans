@@ -47,7 +47,8 @@ class CoilForm:
 	def lookupCoilForms(table, sizemin, sizemax):
 		resp = []
 		for c in table:
-			# print(c, size)
-			if sizemin <= c.leg and sizemax >= c.leg:
+			carea = c.leg * c.stack
+			# print(carea, sizemin, sizemax)
+			if sizemin <= carea and sizemax >= carea:
 				resp.append(c)
 		return resp
