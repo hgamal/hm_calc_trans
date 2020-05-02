@@ -6,7 +6,7 @@ import Core
 
 def lookupWire(area):
 	rc = -1
-	len = 2*(area/3.14159265)**(1/2)
+	len = 2*(area/math.pi)**(1/2)
 	for AWG in range(40,0,-1):
 		Bitola = 0.005*92**((36-AWG)/39)*25.4
 		# print (AWG, len, Bitola, sep=", ")
@@ -15,13 +15,22 @@ def lookupWire(area):
 			break
 	return rc	
 
+def getWireDiameterByDesignation(designation):
+	Bitola = 0.005*92**((36-designation)/39)*25.4
+	return Bitola	
+
+def getWireAreaByDesignation(designation):
+	Bitola = 0.005*92**((36-designation)/39)*25.4
+	rc = (Bitola/2.0) ** 2 * math.pi
+	return rc	
+
 def lookupCoilForm(area):
 	forms = CoilForm.CoilForm.load("reels.csv")
 	selectForms = CoilForm.CoilForm.lookupCoilForms(forms, area, area*1.5)
 	if len(selectForms) != 0:
 		i = 0
 		for bob in selectForms:
-			print (str(i)+" : "+str(bob))
+			print (f'{i} : {bob}')
 			i = i+1
 		sel=input("selecione o carretel a ser usado, da lista acima: ")
 		return selectForms[int(sel)]
@@ -33,7 +42,7 @@ def lookupCore(L):
 	if len(selectCores) != 0:
 		i = 0
 		for c in selectCores:
-			print (str(i)+" : "+str(c))
+			print (f'{i} : {c}')
 			i = i+1
 		sel=input("selecione o laminado a ser usado, da lista acima: ")
 		return selectCores[int(sel)]
@@ -62,10 +71,10 @@ if Tipo.upper() == "SE":
 if Tipo.upper() == "PP":
 	Ii = Ip
 	Bm = 8000.0
-	Imax = Ii * 1.414213562
+	Imax = Ii * 2 ** (0.5)
 	soma = Iq**2
 	for Angulo in range (10,350,10):
-		Ix = Imax * math.sin(Angulo*3.14159265435/180)
+		Ix = Imax * math.sin(Angulo*math.pi/180)
 		if Ix > -(Iq):
 			Ix2 = (Ix+Iq)**2
 		else:
@@ -85,7 +94,7 @@ Sg = 1.1*Sm
 
 Ls = round(Sg**(1/2),1)
 
-print("Secçao minima do nucleo: " +  str(round(Sg,2)) + "cm2, perna central de " + str(Ls) + " cm")
+print(f'Secçao minima do nucleo: {Sg:.2f} cm2, perna central de  {Ls:.2f} cm')
 
 coilForm = lookupCoilForm(Sg*100)
 if coilForm is None:
@@ -93,7 +102,7 @@ if coilForm is None:
 	H = float(input("Empilhamento do nucleo (cm) ? "))
 else:
 	H = coilForm.stack/10
-	print("Usando o carretel " + str(coilForm) + ", Empilhamento = " + str(H) + " (cm)")
+	print(f'Usando o carretel {coilForm.supplier}:{coilForm.model}, Empilhamento = {H} (cm)')
 
 core = lookupCore(coilForm.leg)
 if core is None:
@@ -101,7 +110,7 @@ if core is None:
 	L = float(input("Largura da perna central (cm) ? "))
 else:
     L = core.leg/10
-    print("Usando o laminado " + str(core) + ", Perna central = " + str(L) + " (cm)")
+    print(f'Usando o laminado {core.supplier}:{core.model}, Perna central = {L:.2f} (cm)')
 
 Sgo = L * H
 Smo = Sgo / 1.1
@@ -114,17 +123,47 @@ No = int(Vo / Vi * Ni)
 
 gap = round(12.56 * Ni * Iq / (Bm * 2),3)
 
+Swi = getWireAreaByDesignation(Wi)
+Swo = getWireAreaByDesignation(Wo)
+
+Scu = float(Ni) * Swi + float(No) * Swo
+Sw = (core.b - core.g) * core.e
+SwScuRatio = float(Sw / Scu)
+
+print(f'Window Area = ({core.b:.2f} -  {core.g:.2f}) * {core.e:.2f} = {Sw:.2f}')
+print(f'Copper Area = {Scu:.2f}')
+
 # Resultados
-	  
-print("*** Resultados ***")
-print("Secção usada " + str(L) + "cm x " + str(H) + " cm = " + str(round(Sgo,2)) + "cm2")
-print("  Lamina: " + str(core))
-print("  Carretel: " + str(coilForm))
-print("Tensao primario:" + str(round(Vi,1)) + "V @ " + str(round(Ii,3)) + "A")
-print("Tensao secundário:" + str(round(Vo,1)) + "V @ " + str(round(Io,3)) + "A")
-print("Espiras primario:" + str(Ni) + " fio AWG " + str(Wi))
-print("Espiras secundario:" + str(No) + " fio AWG " + str(Wo))
+print("\n\n*** Resultados ***")
+print(f'Secção usada {L:.2f} cm x {H} cm = {Sgo:.2f} cm2')
+print(f'Lamina:             {core.supplier}:{core.model}')
+print(f'Carretel:           {coilForm.supplier}:{coilForm.model}')
+print(f'Tensao primario:    {Vi:.1f} V @ {Ii:.3f} A')
+print(f'Tensao secundário:  {Vo:.1f} V @ {Io:.3f} A')
+print(f'Espiras primario:   {Ni} fio AWG {Wi}')
+print(f'Espiras secundario: {No} fio AWG {Wo}')
 
 if Tipo.upper() == "SE":
-	print("Gap: " + str(gap) + " mm na perna central e laterais")
+	print(f'Gap: {gap:.2f} mm na perna central e laterais')
+ 
+if SwScuRatio >= 3.0:
+	print(f'Construção possível razão de áreas: {SwScuRatio:.2f}')
+else:
+	print(f'Construção impossível razão de áreas: {SwScuRatio:.2f}')
+
+insThick = 0.050 # AWG 14 = 0.064; AWG 33 = 0.030 
+
+winLength = coilForm.length - coilForm.thickness * 2
+
+nWi = int(winLength / (insThick + Swi))
+nWo = int(winLength / (insThick + Swo))
+
+nLi = int(float(Ni) / nWi + 0.95)
+nLo = int(float(No)/ nWo + 0.95)
+
+nWi = Ni / nLi
+nWo = No / nLo
+
+print(f'{nLi} camadas de {nWi} espiras fio AWG {Wi}')
+print(f'{nLo} camadas de {nWo} espiras fio AWG {Wo}')
 
