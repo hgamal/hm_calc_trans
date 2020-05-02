@@ -15,41 +15,52 @@ http://www.handmades.com.br/forum/index.php?topic=11647
 
 ## Excutando
 
-	[hgamal@ygamal ~]$ cd hm_calc_trans
 	[hgamal@ygamal hm_calc_trans]$ ./calc_trafo 
-	Potência (watts) ? 5
-	Impedancia do primario (ohms) ? 5000
+	Potência (watts) ? 10
+	Impedancia do primario (ohms) ? 8000
 	Impedancia do secundario (ohms) ? 8
-	Frequencia (Hz) ? 40
-	Transformador PP ou SE ? se
-	Secçao minima do nucleo: 3.57cm2, perna central de 1.9 cm
+	Frequencia (Hz) ? 80
+	Transformador PP ou SE ? pp
+	Corrente de repouso (A) ? 0.06
+	Secçao minima do nucleo: 3.57 cm2, perna central de  1.90 cm
+	0 : model="sarlo:SP 08", type="STSR", leg=16.5 mm, stack=22.7 mm, thickness=2.0 mm
+	1 : model="sarlo:SP 09", type="STSR", leg=16.0 mm, stack=27.3 mm, thickness=2.0 mm
+	2 : model="sarlo:SP 10", type="STSR", leg=16.7 mm, stack=30.8 mm, thickness=2.0 mm
+	3 : model="sarlo:SP 14", type="STSR", leg=20.0 mm, stack=20.0 mm, thickness=2.0 mm
+	4 : model="sarlo:SP 15", type="STSR", leg=20.0 mm, stack=22.5 mm, thickness=2.0 mm
+	5 : model="sarlo:SP 18", type="STSR", leg=23.0 mm, stack=23.0 mm, thickness=2.0 mm
+	6 : model="sarlo:SP 47", type="STSR", leg=26.0 mm, stack=19.2 mm, thickness=2.0 mm
+	7 : model="sarlo:SP 48", type="STSR", leg=26.0 mm, stack=20.5 mm, thickness=2.0 mm
+	8 : model="sarlo:SP 35", type="PT", leg=16.8 mm, stack=23.0 mm, thickness=2.0 mm
+	9 : model="sarlo:SP 38", type="PT", leg=20.0 mm, stack=22.0 mm, thickness=2.0 mm
+	10 : model="sarlo:SP 44", type="PTCD", leg=16.8 mm, stack=22.9 mm, thickness=2.0 mm
+	11 : model="sarlo:SP 45", type="PTCD", leg=20.2 mm, stack=22.2 mm, thickness=2.0 mm
+	12 : model="lider:17x23", type="PT", leg=17.0 mm, stack=23.0 mm, thickness=2.0 mm
+	13 : model="lider:20x20", type="STSR", leg=20.0 mm, stack=20.0 mm, thickness=2.0 mm
+	14 : model="lider:20x22", type="PT", leg=20.0 mm, stack=22.0 mm, thickness=2.0 mm
+	15 : model="lider:26x20", type="STSR", leg=26.0 mm, stack=20.0 mm, thickness=2.0 mm
+	selecione o carretel a ser usado, da lista acima: 13
+	Usando o carretel lider:20x20, Empilhamento = 2.0 (cm)
 	0 : lider:2HS-190: leg=19.0 mm
 	1 : lider:4HS-190: leg=19.0 mm
 	2 : lider:4HS-200: leg=20.0 mm
-	selecione o laminado a ser usado, da lista acima: 1
-	Usando o laminado lider:4HS-190: leg=19.0 mm, Perna central = 1.9 (cm)
-	0 : model="sarlo:SP 14", type="STSR", leg=20.0 mm, stack=20.0 mm, thickness=2.0 mm
-	1 : model="sarlo:SP 15", type="STSR", leg=20.0 mm, stack=22.5 mm, thickness=2.0 mm
-	2 : model="sarlo:SP 16", type="STSR", leg=20.2 mm, stack=30.7 mm, thickness=2.0 mm
-	3 : model="sarlo:SP 38", type="PT", leg=20.0 mm, stack=22.0 mm, thickness=2.0 mm
-	4 : model="sarlo:SP 39", type="PT", leg=20.0 mm, stack=30.8 mm, thickness=2.0 mm
-	5 : model="sarlo:SP 45", type="PTCD", leg=20.2 mm, stack=22.2 mm, thickness=2.0 mm
-	6 : model="santarita:#16", type="SR", leg=19.9 mm, stack=19.8 mm, thickness=2.0 mm
-	7 : model="santarita:#17", type="CR", leg=20.0 mm, stack=22.7 mm, thickness=2.0 mm
-	8 : model="santarita:#18", type="PT", leg=20.0 mm, stack=22.3 mm, thickness=2.0 mm
-	9 : model="santarita:#19", type="CR", leg=20.1 mm, stack=22.3 mm, thickness=2.0 mm
-	10 : model="santarita:#20", type="CRCD", leg=20.1 mm, stack=22.3 mm, thickness=2.0 mm
-	selecione o carretel a ser usado, da lista acima: 0
-	Usando o carretel model="sarlo:SP 14", type="STSR", leg=20.0 mm, stack=20.0 mm, thickness=2.0 mm, Empilhamento = 2.0 (cm)
+	selecione o laminado a ser usado, da lista acima: 2
+	Usando o laminado lider:4HS-200, Perna central = 2.00 (cm)
+	Window Area = (40.00 -  10.00) * 10.00 = 300.00
+	Copper Area = 104.82
+
+
 	*** Resultados ***
-	Secção usada 1.9cm x 2.0 cm = 3.8cm2
-	Lamina: lider:4HS-190: leg=19.0 mm
-	Carretel: model="sarlo:SP 14", type="STSR", leg=20.0 mm, stack=20.0 mm, thickness=2.0 mm
-	Tensao primario:158.1V @ 0.055A
-	Tensao secundário:6.3V @ 0.791A
-	Espiras primario:5154 fio AWG 34
-	Espiras secundario:206 fio AWG 22
-	Gap: 0.29 mm na perna central e laterais
+	Secção usada 2.00 cm x 2.0 cm = 4.00 cm2
+	Lamina:             lider:4HS-200
+	Carretel:           lider:20x20
+	Tensao primario:    282.8 V @ 0.069 A
+	Tensao secundário:  8.9 V @ 1.118 A
+	Espiras primario:   2737 fio AWG 33
+	Espiras secundario: 86 fio AWG 21
+	Construção impossível razão de áreas: 2.86
+	11 camadas de 248.8 espiras fio AWG 33
+	2 camadas de 43.0 espiras fio AWG 21
 
 ## Tabelas
 
