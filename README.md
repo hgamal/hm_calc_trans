@@ -63,3 +63,7 @@ http://www.handmades.com.br/forum/index.php?topic=11647
 - Cores.py - Objeto de manutenção e manipulação de lâminas
 - CoilForm.py - Objeto de manutenção e manipulação de carretéis
 - calc_trafo - programa principal
+
+## Imagens
+
+- core_dimensions.png - imagem descrevendo os campos de cores.ods
