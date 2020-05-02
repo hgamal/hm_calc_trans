@@ -164,6 +164,6 @@ nLo = int(float(No)/ nWo + 0.95)
 nWi = Ni / nLi
 nWo = No / nLo
 
-print(f'{nLi} camadas de {nWi} espiras fio AWG {Wi}')
-print(f'{nLo} camadas de {nWo} espiras fio AWG {Wo}')
+print(f'{nLi} camadas de {nWi:.1f} espiras fio AWG {Wi}')
+print(f'{nLo} camadas de {nWo:.1f} espiras fio AWG {Wo}')
 
