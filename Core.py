@@ -1,15 +1,23 @@
 import csv
 
 class Core:
-	name = 'none'
+	model = 'none'
 	leg = 0.0
-	def __init__(self, supplier, name, leg):
+ 
+	def __init__(self, supplier, model, a, b, leg, d, e, f, g):
 		self.supplier = supplier
-		self.name = name
+		self.model = model
 		self.leg = float(leg)
+		self.a = float(a)
+		self.b = float(b)
+		self.c = float(leg)
+		self.d = float(d)
+		self.e = float(e)
+		self.f = float(f)
+		self.g = float(g)
   
 	def __repr__(self):
-		return self.supplier + ":" + self.name + ": leg=" + str(self.leg) + " mm"
+		return self.supplier + ":" + self.model + ": leg=" + str(self.leg) + " mm"
 
 	@staticmethod
 	def load(file):
@@ -22,8 +30,8 @@ class Core:
 					# print(f'Column names: {", ".join(row)}')
 					line_count += 1
 				else:
-					bob = Core(row[0], row[1], row[4])
-					table.append(bob);
+					bob = Core(row[0], row[1], row[2], row[3], row[4], row[5], row[6], row[7], row[8])
+					table.append(bob)
 					# print(f'\t{row[0]}: code="{row[1]}"", leg={row[2]} mm')
 					line_count += 1
 			# print(f'Processed {line_count} lines.')
